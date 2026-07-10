@@ -134,6 +134,8 @@ def merge(found: list[dict], existing: dict, config: dict) -> dict:
         })
         merged[grant_id] = grant
     for grant_id, grant in old.items():
+        if grant_id.startswith("sample-") and merged:
+            continue
         if grant_id not in merged:
             grant["is_new"] = False
             merged[grant_id] = grant
