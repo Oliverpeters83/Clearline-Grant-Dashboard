@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260710-2">
 </head>
 <body>
   <header class="topbar">
@@ -50,19 +50,19 @@
         <option value="low">Lower match (&lt;60)</option>
       </select>
       <select id="statusFilter" aria-label="Filter by status">
-        <option value="Open">Open</option>
         <option value="">All statuses</option>
+        <option value="Open">Open</option>
         <option value="Upcoming">Upcoming</option>
         <option value="Closed">Closed</option>
       </select>
     </section>
 
-    <div class="results-bar"><strong id="resultCount">0 opportunities</strong><span>Sorted by best match</span></div>
+    <div class="results-bar"><strong id="resultCount">Loading opportunities…</strong><span>Sorted by best match</span></div>
     <section id="grantGrid" class="grant-grid" aria-live="polite"></section>
     <div id="emptyState" class="empty" hidden><strong>No matching opportunities</strong><span>Try adjusting the filters above.</span></div>
   </main>
 
   <footer>Clearline Technologies · Funding Intelligence Dashboard <span>Information should be verified before applying.</span></footer>
-  <script src="app.js" defer></script>
+  <script src="app.js?v=20260710-2" defer></script>
 </body>
 </html>
