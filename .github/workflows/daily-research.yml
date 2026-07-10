@@ -1,0 +1,29 @@
+name: Daily grant research
+on:
+  schedule:
+    - cron: "15 12 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Research and verify opportunities
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: gpt-5.5
+        run: python scripts/research_grants.py
+      - name: Save dashboard data
+        run: |
+          git config user.name "Clearline Funding Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/grants.json
+          git diff --cached --quiet || git commit -m "Update grant opportunities"
+          git push
