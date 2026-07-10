@@ -1,0 +1,49 @@
+{
+  "last_checked": "2026-07-10",
+  "grants": [
+    {
+      "id": "sample-irap",
+      "program": "NRC Industrial Research Assistance Program (IRAP)",
+      "organization": "National Research Council Canada",
+      "description": "Provides advice, connections and potential funding to help eligible Canadian small and medium-sized businesses develop and commercialize innovative technology.",
+      "category": "Research & Development",
+      "funding_amount": "Project dependent",
+      "funding_max": null,
+      "funding_type": "Contribution",
+      "deadline": "Ongoing",
+      "province": "Canada-wide",
+      "status": "Open",
+      "match_score": 91,
+      "fit_reason": "Strong alignment with product development, manufacturing innovation and commercialization work at a Canadian SME.",
+      "official_url": "https://nrc.canada.ca/en/support-technology-innovation/industrial-research-assistance-program",
+      "source_domain": "nrc.canada.ca",
+      "is_new": false,
+      "first_found": "2026-07-10",
+      "last_checked": "2026-07-10",
+      "last_updated": "2026-07-10",
+      "change_notes": "Initial sample record; verify eligibility before applying."
+    },
+    {
+      "id": "sample-sred",
+      "program": "Scientific Research and Experimental Development Tax Incentive Program",
+      "organization": "Canada Revenue Agency",
+      "description": "A federal tax incentive for eligible research and experimental development performed in Canada, including qualifying wages, materials and contractor expenditures.",
+      "category": "Research & Development",
+      "funding_amount": "Tax credit based on eligible expenditures",
+      "funding_max": null,
+      "funding_type": "Tax credit",
+      "deadline": "Ongoing",
+      "province": "Canada-wide",
+      "status": "Open",
+      "match_score": 84,
+      "fit_reason": "Potential fit where Clearline undertakes documented technical experimentation or develops new manufacturing processes and products.",
+      "official_url": "https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html",
+      "source_domain": "canada.ca",
+      "is_new": false,
+      "first_found": "2026-07-10",
+      "last_checked": "2026-07-10",
+      "last_updated": "2026-07-10",
+      "change_notes": "Initial sample record; verify eligible work and filing timelines."
+    }
+  ]
+}

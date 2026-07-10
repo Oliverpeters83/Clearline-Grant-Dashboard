@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Clearline Technologies funding opportunity dashboard">
+  <title>Clearline Funding Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Clearline Funding Intelligence home">
+      <span class="brand-mark">C</span>
+      <span><strong>Clearline</strong><small>Funding Intelligence</small></span>
+    </a>
+    <div class="updated"><span class="pulse"></span> Last checked <strong id="lastChecked">—</strong></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">GRANTS &amp; FUNDING</p>
+        <h1>Funding opportunities,<br><span>without the noise.</span></h1>
+        <p class="hero-copy">Verified programs ranked for Clearline Technologies. Every link goes directly to the official program page.</p>
+      </div>
+      <div class="hero-aside">
+        <div class="scan-label">AUTOMATED SCAN</div>
+        <strong>Daily</strong>
+        <span>Official sources only</span>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Funding summary">
+      <article><span>Active opportunities</span><strong id="activeCount">0</strong><small id="newCount">0 new</small></article>
+      <article><span>High matches</span><strong id="highCount">0</strong><small>Score 80+</small></article>
+      <article><span>Closing soon</span><strong id="closingCount">0</strong><small>Within 30 days</small></article>
+      <article><span>Potential funding</span><strong id="fundingTotal">—</strong><small>Known maximums</small></article>
+    </section>
+
+    <section class="controls" aria-label="Filter opportunities">
+      <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search programs, organizations, or keywords…"></label>
+      <select id="categoryFilter" aria-label="Filter by category"><option value="">All categories</option></select>
+      <select id="matchFilter" aria-label="Filter by match score">
+        <option value="">All match scores</option>
+        <option value="high">High match (80+)</option>
+        <option value="medium">Medium match (60–79)</option>
+        <option value="low">Lower match (&lt;60)</option>
+      </select>
+      <select id="statusFilter" aria-label="Filter by status">
+        <option value="Open">Open</option>
+        <option value="">All statuses</option>
+        <option value="Upcoming">Upcoming</option>
+        <option value="Closed">Closed</option>
+      </select>
+    </section>
+
+    <div class="results-bar"><strong id="resultCount">0 opportunities</strong><span>Sorted by best match</span></div>
+    <section id="grantGrid" class="grant-grid" aria-live="polite"></section>
+    <div id="emptyState" class="empty" hidden><strong>No matching opportunities</strong><span>Try adjusting the filters above.</span></div>
+  </main>
+
+  <footer>Clearline Technologies · Funding Intelligence Dashboard <span>Information should be verified before applying.</span></footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
