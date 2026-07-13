@@ -1,4 +1,4 @@
-const state={grants:[],query:"",category:"",match:"",status:""};
+const state={grants:[],query:"",category:"",match:"",status:"Open"};
 const $=id=>document.getElementById(id);
 const escapeHtml=s=>String(s??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
 const isIsoDate=s=>/^\d{4}-\d{2}-\d{2}$/.test(String(s||""));
@@ -11,18 +11,27 @@ const fmtDate=s=>{
 const daysTo=s=>!isIsoDate(s)?9999:Math.ceil((new Date(`${s}T23:59:59Z`)-new Date())/86400000);
 const money=n=>new Intl.NumberFormat("en-CA",{style:"currency",currency:"CAD",notation:"compact",maximumFractionDigits:1}).format(n);
 
+async function loadGrantData(){
+  const embedded=window.CLEARLINE_GRANT_DATA;
+  if(embedded&&Array.isArray(embedded.grants))return embedded;
+
+  const appScript=[...document.scripts].find(script=>/\/app\.js(?:[?#]|$)/.test(script.src));
+  const dataUrl=new URL("./data/grants.json",appScript?.src||document.baseURI);
+  const r=await fetch(dataUrl,{cache:"no-store"});
+  if(!r.ok)throw new Error(`Grant data request failed: ${r.status}`);
+  return r.json();
+}
+
 async function init(){
   try{
-    const r=await fetch("data/grants.json",{cache:"no-store"});
-    if(!r.ok)throw new Error(`Grant data request failed: ${r.status}`);
-    const data=await r.json();
+    const data=await loadGrantData();
     state.grants=data.grants||[];
     $("lastChecked").textContent=fmtDate(data.last_checked);
     setupFilters();
     render();
   }catch(e){
     console.error(e);
-    $("grantGrid").innerHTML='<div class="empty"><strong>Grant data could not be loaded.</strong><span>Run the research workflow or check data/grants.json.</span></div>';
+    $("grantGrid").innerHTML='<div class="empty"><strong>Grant data could not be loaded.</strong><span>Please refresh the page. If this continues, check the latest Pages deployment.</span></div>';
   }
 }
 
@@ -38,11 +47,11 @@ function setupFilters(){
   state.query="";
   state.category="";
   state.match="";
-  state.status="";
+  state.status="Open";
   $("searchInput").value="";
   categoryFilter.value="";
   $("matchFilter").value="";
-  $("statusFilter").value="";
+  $("statusFilter").value="Open";
 
   [["searchInput","input","query"],["categoryFilter","change","category"],["matchFilter","change","match"],["statusFilter","change","status"]].forEach(([id,event,key])=>{
     $(id).addEventListener(event,e=>{
