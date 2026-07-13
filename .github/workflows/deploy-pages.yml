@@ -38,6 +38,9 @@ jobs:
           cp index.html styles.css app.js _site/
           mkdir _site/data
           cp data/grants.json _site/data/
+          printf 'window.CLEARLINE_GRANT_DATA = ' > _site/data/grants.js
+          cat data/grants.json >> _site/data/grants.js
+          printf ';\n' >> _site/data/grants.js
           touch _site/.nojekyll
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
